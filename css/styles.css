@@ -1,0 +1,51 @@
+* {
+  font-family: 'Cinzel', serif;
+}
+
+a {
+  margin-right: 10px;
+}
+
+.img {
+  width: 100px;
+  height: 100px;
+}
+
+div {
+  color: white;
+}
+
+.container {
+  background-color: #42424c;
+}
+
+header {
+  padding: 50px 20px;
+  background-color: #d1c7c9;
+}
+
+.navBar {
+  font-size: 2.5rem;
+}
+
+.list {
+  padding: 20px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.titles {
+  padding: 10px;
+  text-align: center;
+  width: 25%;
+}
+
+.animationTitle {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.imageLocation {
+  text-align: center;
+}
