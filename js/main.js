@@ -14,8 +14,6 @@ xhrFilms.addEventListener('load', function () {
     var $animationTitle = document.querySelector('.animationTitle');
     var titleImages = document.createElement('div');
     titleImages.setAttribute('class', 'imageLocation');
-    titleImage.setAttribute('width', '100px');
-    titleImage.setAttribute('height', '100px');
     titleImage.setAttribute('class', 'img');
 
     $animationTitle.append(titleElement);
