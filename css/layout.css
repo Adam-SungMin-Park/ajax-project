@@ -1,4 +1,33 @@
-.animation {
-  display: flex;
-  flex-basis: 25%;
+* {
+  font-family: 'Cinzel', serif;
+}
+
+a {
+  margin-right: 10px;
+}
+.container {
+  background-color: #42424c;
+}
+header {
+  padding: 50px 20px;
+  background-color: #d1c7c9;
+}
+
+.navBar {
+  font-size: 2.5rem;
+}
+.navBar:hover{
+  cursor: pointer;
+}
+.animationDetails{
+  display: none;
+
+}
+.hidden{
+  display:none;
+}
+.view{
+ background-color: #42424c;
+ display:block;
+ text-align:center;
 }
