@@ -1,16 +1,18 @@
 .img {
-
   width: 100px;
   height: 100px;
 }
+
 .titles {
   padding: 10px;
   text-align: center;
   width: 25%;
 }
-.titles:hover{
+
+.titles:hover {
   cursor: pointer;
 }
+
 div {
   color: white;
 }
@@ -20,18 +22,18 @@ div {
   font-size: 1.5rem;
   text-align: center;
 }
-.list2{
-    padding: 20px;
+
+.list2 {
+  padding: 20px;
   font-size: 1.5rem;
   text-align: center;
 }
 
-.bigImage{
-  height:300px;
-  width:300px;
-  text-align:center;
+.bigImage {
+  height: 300px;
+  width: 300px;
+  text-align: center;
 }
-
 
 .animationTitle {
   display: flex;
@@ -41,4 +43,8 @@ div {
 
 .imageLocation {
   text-align: center;
+}
+
+.favorite {
+  padding: 100px;
 }
