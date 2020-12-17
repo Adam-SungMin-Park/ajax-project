@@ -48,3 +48,6 @@ div {
 .favorite {
   padding: 100px;
 }
+.favorite:hover{
+  cursor: pointer;
+}
