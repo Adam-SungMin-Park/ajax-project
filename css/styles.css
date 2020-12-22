@@ -3,6 +3,10 @@
   height: 100px;
 }
 
+.favoriteImg {
+  width: 100px;
+  height: 100px;
+}
 .titles {
   padding: 10px;
   text-align: center;
@@ -45,9 +49,40 @@ div {
   text-align: center;
 }
 
+.favoriteImageLocations {
+  text-align: center;
+}
+
 .favorite {
   padding: 100px;
 }
 .favorite:hover{
   cursor: pointer;
+}
+.animationTitle2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.favoriteTitles {
+  padding: 10px;
+  text-align: center;
+  width: 25%;
+}
+.title {
+  padding: 10px;
+  text-align: center;
+  width: 25%;
+}
+
+@media screen and (max-width: 375px){
+.img {
+  width: 80px;
+  height: 80px;
+}
+
+.favoriteImg {
+  width: 80px;
+  height: 80px;
+}
 }
