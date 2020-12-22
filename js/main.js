@@ -14,20 +14,11 @@ $favorite.setAttribute('class', 'no favorite');
 $favorite.setAttribute('id','favorite?');
 var $favoriteView = document.querySelector('.favorites');
 var $animationTitle2Location = document.querySelector('.animationTitle2');
-
 var count = 0;
-
-
-
 $favorite.textContent = 'Add to Favorite🤍';
-
 var myStorage = window.localStorage;
 
-
-
-
 xhrFilms.addEventListener('load', function (event) {
-
   for (var i = 0; i < xhrFilms.response.length; i++) {
     var titleElement = document.createElement('div');
     titleElement.setAttribute('class', 'titles');
@@ -49,7 +40,7 @@ xhrFilms.addEventListener('load', function (event) {
 xhrFilms.send();
 
 window.addEventListener('click', function (event) {
-
+  console.log(event.target.id)
   if (event.target.className === 'titles') {
     $container.className = 'hidden';
     $animationDetails.className = 'animationDetails view';
@@ -59,25 +50,20 @@ window.addEventListener('click', function (event) {
     $animationDetails.append($animationList);
     $animationDetails.append($bigAnime);
 
-  for (var i = 0; i <data.title.length; i++) {
-
-      alert(event.target.textContent);
-      alert(data.title[i]);
+    for (var i = 0; i <data.title.length; i++) {
       if (event.target.textContent !== data.title[i]) {
-        //count = 0;
+        count = 0;
         $favorite.className = 'no favorite';
         $favorite.textContent = 'Add to Favorite🤍';
       }
       if(event.target.textContent === data.title[i]){
-        //count = 1 ;
+        count = 1 ;
         $favorite.className = 'favorite';
         $favorite.textContent = '♥️';
       }
     }
 
   }
-
-
   if (event.target.className === 'img') {
     $container.className = 'hidden';
     $animationDetails.className = 'animationDetails view';
@@ -104,50 +90,16 @@ window.addEventListener('click', function (event) {
 });
 
 window.addEventListener('click', function (event) {
-
   for (var i = 0; i < xhrFilms.response.length; i++) {
     if (event.target.className === 'titles' && event.target.textContent === xhrFilms.response[i].title) {
       $description.textContent = xhrFilms.response[i].description;
-
-      if (data.title.length === 0) {
-        $favorite.className = 'no favorite';
-        $favorite.textContent = 'Add to Favorite🤍';
-      } else {
-        for (var i = 0; i < data.title.length; i++) {
-          if (data.title[i] === xhrFilms.response[i].title) {
-            $favorite.className = 'favorite';
-            $favorite.textContent = '♥️';
-          } else {
-            $favorite.className = 'no favorite';
-            $favorite.textContent = 'Add to Favorite🤍';
-          }
-        }
-      }
-
       $animationDetails.append($description);
       $animationDetails.append($favorite);
-
     }
     if (event.target.className === 'img' && event.target.id === xhrFilms.response[i].title) {
       $description.textContent = xhrFilms.response[i].description;
-      if (data.title.length === 0) {
-        $favorite.className = 'no favorite';
-        $favorite.textContent = 'Add to Favorite🤍';
-      } else {
-        for (var i = 0; i < data.title.length; i++) {
-          if (data.title[i] === xhrFilms.response[i].title) {
-            $favorite.className = 'favorite';
-            $favorite.textContent = '♥️';
-          } else {
-            $favorite.className = 'no favorite';
-            $favorite.textContent = 'Add to Favorite🤍';
-          }
-        }
-      }
-
       $animationDetails.append($description);
       $animationDetails.append($favorite);
-
     }
   }
 });
@@ -212,54 +164,10 @@ $navBar.addEventListener('click', function (event) {
 window.addEventListener('click', function (event) {
 
   if (event.target.className === 'no favorite' || event.target.className === 'favorite') {
-
-    /*if(data.title.length == 0){
-      for (var i = 0; i < xhrFilms.response.length; i++) {
-        if (xhrFilms.response[i].title === $animationList.textContent) {
-          alert("added to favorites!");
-
-          $favorite.textContent = '♥️';
-          $favorite.className = "favorite"
-
-          data.title.push($animationList.textContent);
-          data.image.push($bigAnime.src);
-
-        }
-      }
-    } else {
-      for (var i = 0; i < data.title.length; i++) {
-
-        if ($animationList.textContent === data.title[i]) {
-          alert("Already in the Favorite! Removing...");
-
-          $favorite.textContent = 'Add to Favorite🤍';
-          $favorite.className = "no favorite";
-
-          data.title.splice(i, 1);
-          data.image.splice(i, 1);
-
-          return '';
-        } else {
-          for (var i = 0; i < xhrFilms.response.length; i++) {
-            if (xhrFilms.response[i].title === $animationList.textContent) {
-              alert("added to favorites!");
-
-              $favorite.textContent = '♥️';
-              $favorite.className = "favorite"
-
-              data.title.push($animationList.textContent);
-              data.image.push($bigAnime.src);
-
-            }
-          }
-        }
-      }
-    }*/
-
-    count++;
+      count++;
 
     if (count % 2 === 1) {
-
+      alert('added to favorites!');
       $favorite.textContent = '♥️';
       $favorite.className = "favorite"
       for(var i = 0 ; i < data.title.length ; i ++){
@@ -268,17 +176,14 @@ window.addEventListener('click', function (event) {
           return'';
         }
       }
-
       for (var i = 0; i < xhrFilms.response.length; i++) {
         if (xhrFilms.response[i].title === $animationList.textContent) {
           data.title.push($animationList.textContent);
           data.image.push($bigAnime.src);
-
+          data.favorite.push('1');
         }
       }
     }
-
-
     if (count % 2 === 0 || count === 0) {
       $favorite.textContent = 'Add to Favorite🤍';
       $favorite.className = "no favorite"
@@ -287,12 +192,10 @@ window.addEventListener('click', function (event) {
           if (data.title[i] === $animationList.textContent) {
             data.title.splice(i, 1);
             data.image.splice(i,1);
-
+            data.favorite.splice(i,1);
           }
       }
     }
-
-
   }
     myStorage.setItem('Favorites', JSON.stringify(data))
 });
