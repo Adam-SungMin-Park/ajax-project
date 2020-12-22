@@ -107,7 +107,13 @@ window.addEventListener('click', function (event) {
 
 $navBar.addEventListener('click', function (event) {
 
-  if (event.target.textContent === 'Home' && data.title.length !==0) {
+
+    if (event.target.textContent === 'Home'&& data.title.length ===0){
+      $container.className = 'container';
+      $animationDetails.className = 'animationDetails hidden';
+      $favoriteView.className = "favorites hidden"
+    }
+  if(event.target.textContent === 'Home' && data.title.length !==0){
     $container.className = 'container';
     $animationDetails.className = 'animationDetails hidden';
     $favoriteView.className = "favorites hidden"
@@ -126,7 +132,14 @@ $navBar.addEventListener('click', function (event) {
       }
   }
 
-  if (event.target.textContent === 'Favorites' && document.querySelectorAll('.animationInfo2').length <1 && data.title.length !==0) {
+    if (event.target.textContent === 'Favorites' &&data.title.length === 0 ){
+      document.querySelector('.favoriteList').textContent = "Oh...such Emptiness";
+      $container.className = 'hidden';
+      $favoriteView.className = "favorites view"
+      $animationDetails.className = "animationDetails hidden"
+    }
+  if (event.target.textContent === 'Favorites' && data.title.length !==0){
+    document.querySelector('.favoriteList').textContent = "List of Favorites!"
     $container.className = 'hidden';
     $favoriteView.className = "favorites view"
     $animationDetails.className = "animationDetails hidden"
