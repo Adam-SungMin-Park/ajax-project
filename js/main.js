@@ -180,7 +180,7 @@ window.addEventListener('click', function (event) {
         if (xhrFilms.response[i].title === $animationList.textContent) {
           data.title.push($animationList.textContent);
           data.image.push($bigAnime.src);
-          data.favorite.push('1');
+
         }
       }
     }
@@ -192,7 +192,7 @@ window.addEventListener('click', function (event) {
           if (data.title[i] === $animationList.textContent) {
             data.title.splice(i, 1);
             data.image.splice(i,1);
-            data.favorite.splice(i,1);
+
           }
       }
     }

@@ -75,14 +75,38 @@ div {
   width: 25%;
 }
 
-@media screen and (max-width: 375px){
+@media screen and (min-width: 320px) and (max-width:810px){
 .img {
-  width: 80px;
-  height: 80px;
+  width:60px;
+  height:60px;
 }
 
 .favoriteImg {
-  width: 80px;
-  height: 80px;
+ width:60px;
+  height:60px;
+}
+.navBar {
+  font-size: 1.5rem;
+}
+.list {
+  padding: 20px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.list2 {
+  padding: 20px;
+  font-size: 1.5rem;
+  text-align: center;
+
+}
+.titles{
+  font-size:0.5rem;
+}
+.title{
+  font-size:0.5rem;
+}
+.favoriteList{
+  font-size: 1rem;
 }
 }
