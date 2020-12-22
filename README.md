@@ -1,6 +1,8 @@
-# ajax-project
+# Ghibli Animations
 
-A dynamic HTML, CSS, and JavaScript solo project.
+A web app created with JavaScript, HTML 5, and CSS 3 for people who want to view the Ghibli animation titles and create their own favorite list.
+
+
 **Link to the Live Demo : https://adam-sungmin-park.github.io/ajax-project/**
 
 **Current Feature List**
