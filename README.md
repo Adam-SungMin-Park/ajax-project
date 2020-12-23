@@ -26,7 +26,9 @@ A web app created with JavaScript, HTML 5, and CSS 3 for people who want to view
 * Importance of responsiveness. Not all users are going to be entering the page using PC. With the abundance of technology, numerous devices also have access to internet which means the project needs to dynamically adapting into whatever the device users using. 
 
 **ScreenShots from Demo**
+![Main Page]
 (https://github.com/Adam-SungMin-Park/ajax-project/blob/master/images/mainpage.png)
+
 (https://github.com/Adam-SungMin-Park/ajax-project/blob/master/images/detailbeforefavorite.png)
 (https://github.com/Adam-SungMin-Park/ajax-project/blob/master/images/favorited.png)
 (https://github.com/Adam-SungMin-Park/ajax-project/blob/master/images/favoritelist.png)
