@@ -29,6 +29,11 @@ A web app created with JavaScript, HTML 5, and CSS 3 for people who want to view
 ![Main Page]
 (https://Adam-SungMin-Park.github.com/images/mainpage.png)
 
+
+
+
+
+
 ![Animation Detail Page]
 (images/detailbeforefavorite.png)
 (https://github.com/Adam-SungMin-Park/ajax-project/blob/master/images/favorited.png)
