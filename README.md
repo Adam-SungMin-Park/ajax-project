@@ -27,7 +27,7 @@ A web app created with JavaScript, HTML 5, and CSS 3 for people who want to view
 
 **ScreenShots from Demo**
 ![Main Page]
-(/images/mainpage.png)
+(https://Adam-SungMin-Park.github.com/images/mainpage.png)
 
 (https://github.com/Adam-SungMin-Park/ajax-project/blob/master/images/detailbeforefavorite.png)
 (https://github.com/Adam-SungMin-Park/ajax-project/blob/master/images/favorited.png)
