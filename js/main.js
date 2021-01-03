@@ -17,7 +17,7 @@ var count = 0;
 $favorite.textContent = 'Add to Favorite🤍';
 var myStorage = window.localStorage;
 
-xhrFilms.addEventListener('load', function (event) {
+xhrFilms.addEventListener('load', ((event)=> {
   for (var i = 0; i < xhrFilms.response.length; i++) {
     var titleElement = document.createElement('div');
     titleElement.setAttribute('class', 'titles');
@@ -26,7 +26,7 @@ xhrFilms.addEventListener('load', function (event) {
     var imageName = titles.toLowerCase().replace(/\s/g, '');
     var titleImage = document.createElement('img');
     titleImage.setAttribute('id', titles);
-    titleImage.setAttribute('src', 'images/' + imageName + '.jpeg');
+    titleImage.setAttribute('src', `images/${imageName}.jpeg`);
     var $animationTitle = document.querySelector('.animationTitle');
     var titleImages = document.createElement('div');
     titleImages.setAttribute('class', 'imageLocation');
@@ -35,15 +35,15 @@ xhrFilms.addEventListener('load', function (event) {
     titleElement.append(titleImages);
     titleImages.append(titleImage);
   }
-});
+}));
 xhrFilms.send();
 
-window.addEventListener('click', function (event) {
+window.addEventListener('click',  ((event) => {
   if (event.target.className === 'titles') {
     $container.className = 'hidden';
     $animationDetails.className = 'animationDetails view';
     $animationList.textContent = event.target.textContent;
-    $bigAnime.setAttribute('src', 'images/' + event.target.textContent.toLowerCase().replace(/\s/g, '') + '.jpeg');
+    $bigAnime.setAttribute('src', `images/${event.target.textContent.toLowerCase().replace(/\s/g, '')}.jpeg`);
     $bigAnime.setAttribute('class', 'bigImage');
     $animationDetails.append($animationList);
     $animationDetails.append($bigAnime);
@@ -88,9 +88,9 @@ window.addEventListener('click', function (event) {
     }
 
   }
-});
+}));
 
-window.addEventListener('click', function (event) {
+window.addEventListener('click',  ((event)=> {
   for (var i = 0; i < xhrFilms.response.length; i++) {
     if (event.target.className === 'titles' && event.target.textContent === xhrFilms.response[i].title) {
       $description.textContent = xhrFilms.response[i].description;
@@ -103,9 +103,9 @@ window.addEventListener('click', function (event) {
       $animationDetails.append($favorite);
     }
   }
-});
+}));
 
-$navBar.addEventListener('click', function (event) {
+$navBar.addEventListener('click', ((event)=> {
 
 
     if (event.target.textContent === 'Home'&& data.title.length ===0){
@@ -176,9 +176,9 @@ $navBar.addEventListener('click', function (event) {
       }
     }
   }
-   });
+   }));
 
-window.addEventListener('click', function (event) {
+window.addEventListener('click',  ((event)=> {
 
   if (event.target.className === 'no favorite' || event.target.className === 'favorite') {
       count++;
@@ -209,4 +209,4 @@ window.addEventListener('click', function (event) {
     }
   }
     myStorage.setItem('Favorites', JSON.stringify(data))
-});
+}));
