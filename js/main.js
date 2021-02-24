@@ -19,6 +19,12 @@ var myStorage = window.localStorage;
 
 xhrFilms.addEventListener('load', ((event)=> {
   for (var i = 0; i < xhrFilms.response.length; i++) {
+    let score = document.createElement('div');
+    score.setAttribute('class','score');
+    score.textContent = xhrFilms.response[i].rt_score ;
+    console.log(score);
+
+
     var titleElement = document.createElement('div');
     titleElement.setAttribute('class', 'titles');
     var titles = xhrFilms.response[i].title;
@@ -93,12 +99,13 @@ window.addEventListener('click',  ((event) => {
 window.addEventListener('click',  ((event)=> {
   for (var i = 0; i < xhrFilms.response.length; i++) {
     if (event.target.className === 'titles' && event.target.textContent === xhrFilms.response[i].title) {
-      $description.textContent = xhrFilms.response[i].description;
+      $description.textContent = "Description : "+xhrFilms.response[i].description;
+      ` `
       $animationDetails.append($description);
       $animationDetails.append($favorite);
     }
     if (event.target.className === 'img' && event.target.id === xhrFilms.response[i].title) {
-      $description.textContent = xhrFilms.response[i].description;
+      $description.textContent = "Description : " + xhrFilms.response[i].description;
       $animationDetails.append($description);
       $animationDetails.append($favorite);
     }

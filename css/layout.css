@@ -4,22 +4,22 @@
 
 a {
   margin-right: 10px;
-  background-color: #d1c7c9;
+  background-color: black;
 }
 
 .container {
-  background-color: #42424c;
+  background-color: black;
   padding-bottom: 100px;
 }
 
 header {
   padding: 50px 20px;
-  background-color: #d1c7c9;
+  background-color: black;
 }
 
 .navBar {
   font-size: 2.5rem;
-  background-color: #d1c7c9;
+  background-color: black;
 }
 
 .navBar:hover {
@@ -35,7 +35,7 @@ header {
 }
 
 .view {
-  background-color: #42424c;
+  background-color: black;
   display: block;
   text-align: center;
 }
