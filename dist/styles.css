@@ -1,0 +1,22 @@
+.animationTitles{
+  width:25%;
+  text-align: center
+}
+.animationTable{
+  display:flex;
+  flex-wrap:wrap;
+
+}
+.home{
+  margin-right:2rem;
+}
+.navbar{
+  display:flex;
+}
+.animationList{
+  text-align:center;
+
+}
+.mainImage{
+  width:75%;
+}
