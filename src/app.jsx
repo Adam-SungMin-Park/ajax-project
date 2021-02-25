@@ -14,12 +14,40 @@ class App extends React.Component {
       score:[],
       favorites: [],
       view: "Home",
-      clicked:[],
+      clicked:
+        {
+        title:"",
+        img:"",
+        description:"",
+        score:""
+      }
+    ,
     }
     this.handleClick = this.handleClick.bind(this);
     this.handleAnimation = this.handleAnimation.bind(this);
-
+    this.addFavorite = this.addFavorite.bind(this);
+    this.removeFavorite = this.removeFavorite.bind(this);
   }
+
+  removeFavorite(){
+    let test = this.state.favorites;
+    for (var i = 0 ; i < this.state.favorites.length ; i++){
+      if( this.state.clicked.title === this.state.favorites[i].title){
+        test.splice(i,1);
+        this.setState({
+          favorites:test,
+          view:"Home"
+        })
+        console.log(this.state.favorites)
+      }
+    }
+  }
+
+
+
+
+
+
   componentDidMount(){
     let titlesArray = [];
     let descriptionArray = [];
@@ -45,22 +73,42 @@ class App extends React.Component {
   }
 
   handleClick(e){
-    console.log(e.target.textContent)
+
     this.setState({
       view:e.target.textContent
     })
   }
-  handleAnimation(e, index){
-    console.log(this.state.titles[index])
-    let test = [];
-    test.push(this.state.titles[index]);
-    test.push(this.state.images[index]);
+
+  addFavorite(){
     this.setState({
-      clicked: test,
-      view:"animation"
+      favorites:this.state.favorites.concat(this.state.clicked),
+      view:"Home"
     })
-    console.log(this.state)
-    console.log(test)
+
+  }
+  handleAnimation(e, index){
+    console.log(index)
+    let test = {};
+    test.title = this.state.titles[index];
+    test.img = this.state.images[index];
+    test.description = this.state.description[index];
+    test.score = this.state.score[index];
+    test.index = index;
+    this.setState({
+      clicked:test,
+      view: "animation"
+    })
+    for(var i = 0 ; i< this.state.favorites.length ; i++){
+      if(this.state.favorites[i].title===test.title){
+
+        this.setState({
+          clicked:test,
+          view:"favoriteAnimation"
+        })
+      }
+    }
+
+
   }
 
 
@@ -68,6 +116,7 @@ class App extends React.Component {
 
   render(){
     console.log(this.state)
+
     if(this.state.view ==="Home"){
       return(
         <div className = "container">
@@ -81,7 +130,7 @@ class App extends React.Component {
           </div>
           <div className = "animationList">
             <div className ="animationListText">
-              <h2>Animations List</h2>
+              <h1>Animations List</h1>
             </div>
           </div>
           <div className="animationTable">
@@ -99,7 +148,7 @@ class App extends React.Component {
         </div>
       )
     }
-    if(this.state.view === "Favorites"){
+    if(this.state.view === "Favorites" && this.state.favorites.length !==0){
       return(
         <div className="container">
           <div className="navbar">
@@ -112,25 +161,58 @@ class App extends React.Component {
           </div>
           <div className="animationList">
             <div className="animationListText">
-              <h2>Favorites</h2>
+              <h1>Favorites</h1>
             </div>
           </div>
-          <div className="animationTable">
-            {this.state.favorites.map((titles, index) => {
+          <div className="favoritesAnimationTable">
+            {this.state.favorites.map((favorite, index) => {
               return (
+                <>
+                 <h3 className="favoriteHeading">{this.state.favorites[index].title}</h3>
 
-                <div onClick={e=>{this.handleClick(e)}} key={index} className="animationTitles" value = "animation">
-                  <h3>{this.state.favorites[index]}</h3>
-                  <img src= "./images/arrietty.jpeg"></img>
+                <div onClick={e=>{this.handleClick(e)}} key={index} className="favoritesAnimationTitles" value = "animation">
+
+                  <div className = "favoritesFirstHalf">
+
+                    <img className ="favoritesImage" src= {this.state.favorites[index].img}></img>
+                  </div>
+                  <div className = "favoritesSecondHalf">
+                    <div className ="detailDescription">
+                        <b>Description :</b><br></br>  {this.state.favorites[index].description}
+                    </div>
+                    <div className = "detailScore">
+                      <b>Rotten Tomatoes Score :</b> {this.state.favorites[index].score}
+                    </div>
+                  </div>
                 </div>
-
+                </>
               )
             })}
           </div>
         </div>
       )
     }
-    if(this.state.view === "animation"){
+    if(this.state.view ==="Favorites" && this.state.favorites.length === 0) {
+      return(
+
+        <div className="container">
+          <div className="navbar">
+            <div className="home">
+              <h1 onClick={e => { this.handleClick(e) }} value="Home" >Home</h1>
+            </div>
+            <div className="favorites">
+              <h1 onClick={e => { this.handleClick(e) }} value="Favorites">Favorites</h1>
+            </div>
+          </div>
+            <div className="animationList">
+              <div className="animationListText">
+                <h1>No Favorites Yet</h1>
+              </div>
+            </div>
+        </div>
+      )
+    }
+    if (this.state.view === "animation" ){
       return(
         <div className="container">
           <div className="navbar">
@@ -143,24 +225,70 @@ class App extends React.Component {
           </div>
           <div className="animationList">
             <div className="animationListText">
-              <h2>{this.state.clicked[0]} Detail Page</h2>
+              <h1>{this.state.clicked.title} Detail Page</h1>
             </div>
           </div>
-          <div className="animationTable">
-            {this.state.favorites.map((titles, index) => {
-              return (
-
-                <div key={index} className="animationTitles">
-                  <h3>{this.state.favorites[index]}</h3>
-                  <img src="./images/arrietty.jpeg"></img>
-                </div>
-
-              )
-            })}
+          <div className="detailAnimationTable">
+            <div className ="firstHalf">
+              <img className ="detailAnimation" src = {this.state.clicked.img}></img>
+            </div>
+            <div className = "secondHalf">
+              <div className = "detailDescription">
+                <b>Description :</b><br></br> {this.state.clicked.description}
+              </div>
+              <div className = "detailScore">
+                <b>Rotten Tomatoes Score :</b> {this.state.clicked.score}
+              </div>
+            </div>
+          </div>
+          <div className ="favoriteButton">
+            <button className ="addButton" onClick ={this.addFavorite}>Add to Favorite</button>
           </div>
         </div>
       )
     }
+
+
+
+      if (this.state.view === "favoriteAnimation") {
+
+      return (
+        <div className="container">
+          <div className="navbar">
+            <div className="home">
+              <h1 onClick={e => { this.handleClick(e) }} value="Home" >Home</h1>
+            </div>
+            <div className="favorites">
+              <h1 onClick={e => { this.handleClick(e) }} value="Favorites">Favorites</h1>
+            </div>
+          </div>
+          <div className="animationList">
+            <div className="animationListText">
+              <h1>{this.state.clicked.title} Detail Page</h1>
+            </div>
+          </div>
+          <div className="detailAnimationTable">
+            <div className="firstHalf">
+              <img className="detailAnimation" src={this.state.clicked.img}></img>
+            </div>
+            <div className="secondHalf">
+              <div className="detailDescription">
+                <b>Description :</b><br></br>{this.state.clicked.description}
+              </div>
+              <div className="detailScore">
+                <b>Rotten Tomatoes Score :</b>{this.state.clicked.score}
+              </div>
+            </div>
+          </div>
+          <div className="favoriteButton">
+            <button className ="removeButton" onClick={this.removeFavorite}>Remove From Favorite</button>
+          </div>
+        </div>
+      )
+    }
+
+
+
   }
 }
 export default App
