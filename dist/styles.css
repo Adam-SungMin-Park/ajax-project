@@ -78,15 +78,21 @@
 }
 @media only screen and (max-width:768px){
   .detailDescription{
-    font-size:1rem;
+    font-size:1.5rem;
   }
   .detailScore{
-    font-size:1rem;
+    font-size:1.5rem;
   }
 }
 
 @media only screen and (max-width:420px){
   .detailAnimation{
     width:85%;
+  }
+   .detailDescription{
+    font-size:1rem;
+  }
+  .detailScore{
+    font-size:1rem;
   }
 }
