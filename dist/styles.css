@@ -1,0 +1,98 @@
+.animationTitles{
+  width:25%;
+  text-align: center
+}
+.animationTable{
+  display:flex;
+  flex-wrap:wrap;
+
+}
+.home{
+  margin-right:2rem;
+}
+.navbar{
+  display:flex;
+}
+.animationList{
+  text-align:center;
+  padding-bottom:2rem;
+
+}
+.mainImage{
+  width:75%;
+}
+.detailAnimation{
+  width:50%;
+}
+.firstHalf{
+  text-align:center;
+   width:50%;
+}
+.secondHalf{
+  width:50%;
+  margin: auto;
+}
+
+.detailAnimationTable{
+  justify-content:center;
+  flex-wrap: nowrap;
+  display:flex;
+}
+.detailDescription{
+  font-size: 2rem;
+    padding-bottom: 2rem;
+}
+.detailScore{
+  font-size: 2rem;
+}
+
+.favoritesImage{
+  width:100%;
+}
+.favoriteHeading{
+  text-align:center;
+  font-size: 2rem;
+}
+.favoritesAnimationTitles{
+  display:flex;
+}
+.favoritesFirstHalf{
+  text-align: center;
+  width:50%;
+}
+.favoritesSecondHalf{
+  text-align: center;
+  width:50%;
+  margin:auto;
+  padding-left: 2rem;
+}
+.favoriteButton{
+  text-align: center;
+    padding-top: 2rem;
+}
+.removeButton{
+  padding:1rem;
+}
+.addButton{
+  padding:1rem;
+}
+@media only screen and (max-width:768px){
+  .detailDescription{
+    font-size:1.5rem;
+  }
+  .detailScore{
+    font-size:1.5rem;
+  }
+}
+
+@media only screen and (max-width:420px){
+  .detailAnimation{
+    width:85%;
+  }
+   .detailDescription{
+    font-size:1rem;
+  }
+  .detailScore{
+    font-size:1rem;
+  }
+}
