@@ -6,11 +6,11 @@ class App extends React.Component {
     this.state = {
       titles: [],
       description: [],
-      images: ['nope', 'images/graveofthefireflies.jpeg', 'images/myneighbortotoro.jpeg',
-        'images/kiki&#39;sdeliveryservice.jpeg', 'images/onlyyesterday.jpeg', 'images/porcorosso.jpeg', 'images/pompoko.jpeg',
-        'images/whisperoftheheart.jpeg', 'https://www.ghibli.jp/images/mononoke.jpg?20201016', 'images/myneighborstheyamadas.jpeg', 'images/spiritedaway.jpeg', 'images/thecatreturns.jpeg',
-        'images/howl&#39;smovingcastle.jpeg', 'images/talesfromearthsea.jpeg', 'testing', 'images/arrietty.jpeg', 'images/fromuponpoppyhill.jpeg',
-        'images/thewindrises.jpeg', 'images/thetaleoftheprincesskaguya.jpeg', 'images/whenmarniewasthere.jpeg'],
+      images: ['https://www.ghibli.jp/images/laputa.jpg', 'https://www.ghibli.jp/images/hotarunohaka.jpg', 'https://www.ghibli.jp/images/totoro.jpg',
+        'https://www.ghibli.jp/images/majo.jpg', 'https://www.ghibli.jp/images/omoide.jpg?20201218', 'https://www.ghibli.jp/images/porco.jpg', 'https://www.ghibli.jp/images/tanuki.jpg',
+        'https://www.ghibli.jp/images/mimi.jpg', 'https://www.ghibli.jp/images/mononoke.jpg?20201016', 'https://www.ghibli.jp/images/yamada.jpg?20201016', 'https://www.ghibli.jp/images/chihiro.jpg', 'https://www.ghibli.jp/images/baron.jpg',
+        'https://www.ghibli.jp/images/howl.jpg?20201016', 'https://www.ghibli.jp/images/ged.jpg', 'https://www.ghibli.jp/images/ponyo.jpg', 'https://www.ghibli.jp/images/karigurashi.jpg', 'https://www.ghibli.jp/images/kokurikozaka.jpg',
+        'https://www.ghibli.jp/images/kazetachinu.jpg', 'https://www.ghibli.jp/images/kaguyahime.jpg', 'https://www.ghibli.jp/images/marnie.jpg'],
       score: [],
       favorites: [],
       view: 'Home',
@@ -111,7 +111,7 @@ class App extends React.Component {
           </div>
           <div className = 'animationList'>
             <div className = 'animationListText'>
-              <h1>Animations List</h1>
+              <h1>Animations List check here</h1>
             </div>
           </div>
           <div className = 'animationTable'>
