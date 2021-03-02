@@ -111,7 +111,7 @@ class App extends React.Component {
           </div>
           <div className = 'animationList'>
             <div className = 'animationListText'>
-              <h1>Animations List check here</h1>
+              <h1>Animations List</h1>
             </div>
           </div>
           <div className = 'animationTable'>
