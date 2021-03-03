@@ -5,12 +5,10 @@
 a {
   margin-right: 10px;
 }
-.container {
-  background-color: #42424c;
-}
+
 header {
   padding: 50px 20px;
-  background-color: #d1c7c9;
+
 }
 
 .navBar {
@@ -26,7 +24,6 @@ header {
   display:none;
 }
 .view{
- background-color: #42424c;
  display:block;
  text-align:center;
 }

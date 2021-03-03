@@ -1,5 +1,7 @@
 /* exported data */
 var data ={
-  title:[],
-  image:[]
+  title: [],
+  image: [],
+  favorite: [],
+  description: []
 }

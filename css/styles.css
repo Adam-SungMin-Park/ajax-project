@@ -1,11 +1,9 @@
 .img {
-  width: 100px;
-  height: 100px;
+  width: 50%;
 }
 
 .favoriteImg {
-  width: 100px;
-  height: 100px;
+  width: 80%;
 }
 .titles {
   padding: 10px;
@@ -18,7 +16,7 @@
 }
 
 div {
-  color: white;
+  color: black;
 }
 
 .list {
@@ -34,8 +32,7 @@ div {
 }
 
 .bigImage {
-  height: 300px;
-  width: 300px;
+  width: 80%;
   text-align: center;
 }
 
@@ -78,11 +75,11 @@ div {
 @media screen and (max-width: 375px){
 .img {
   width: 80px;
-  height: 80px;
+
 }
 
 .favoriteImg {
   width: 80px;
-  height: 80px;
+
 }
 }
