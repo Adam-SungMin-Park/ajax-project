@@ -1,3 +1,5 @@
+
+
 var xhrFilms = new XMLHttpRequest();
 xhrFilms.open('GET', 'https://ghibliapi.herokuapp.com/films');
 xhrFilms.responseType = 'json';
@@ -6,11 +8,12 @@ var $bigAnime = document.createElement('img');
 var $animationDetails = document.querySelector('.animationDetails');
 var $animationList = document.createElement('div');
 $animationList.setAttribute('class', 'list2');
-var $favorite = document.createElement('div');
+var $favoritesButton = document.createElement('div');
 var $description = document.createElement('div');
 var $navBar = document.querySelector('.navBar');
 $description.setAttribute('class', 'description');
-$favorite.setAttribute('class', 'no favorite');
+$favoritesButton.setAttribute('class', 'favoritesButton');
+
 
 var $favoriteView = document.querySelector('.favorites');
 var $animationTitle2Location = document.querySelector('.animationTitle2');
@@ -25,6 +28,7 @@ xhrFilms.addEventListener('load', function (event) {
     var titles = xhrFilms.response[i].title;
     titleElement.textContent = titles;
     data.description.push(xhrFilms.response[i].description);
+    data.score.push(xhrFilms.response[i].rt_score);
 
     var imageName = titles.toLowerCase().replace(/\s/g, '');
     var titleImage = document.createElement('img');
@@ -46,194 +50,134 @@ xhrFilms.send();
 window.addEventListener('click',()=> {
   if (event.target.textContent === 'Home') {
     $animationDetails.className = 'animationDetails hidden';
+    $favoriteView.className = "favorites hidden"
     $container.className = 'container';
-
+    if(document.querySelectorAll('.favoriteAnimations').length !== 0) {
+      for (var i = 0; i < document.querySelectorAll('.favoriteAnimations').length; i++){
+        document.querySelectorAll('.favoriteAnimations')[i].remove()
+      }
+    }
 
   }
 
-  if (event.target.textContent === 'Favorites') {
+  if (event.target.textContent === 'Favorites' && document.querySelectorAll('.favoriteAnimations').length === 0) {
+
+
     $container.className = 'hidden';
     $favoriteView.className = "favorites view"
     $animationDetails.className = "animationDetails hidden"
+
+
+    for (var i = 0 ; i < data.favorite.length ; i++){
+    let $favoriteAnimations = document.createElement('div');
+    $favoriteAnimations.setAttribute('class','favoriteAnimations');
+    $favoriteView.append($favoriteAnimations);
+
+    let $favoriteAnimationTitle = document.createElement('div');
+    $favoriteAnimationTitle.setAttribute('class','favoriteAnimationTitle');
+    $favoriteAnimationTitle.textContent = data.favorite[i].title;
+    let $column = document.createElement('div');
+    $column.setAttribute('class','column');
+    let $firstHalf = document.createElement('div');
+    $firstHalf.setAttribute('class','firstHalf');
+    let $favoriteAnimationImageLocation = document.createElement('div');
+    $favoriteAnimationImageLocation.setAttribute('class','favoriteAnimationImageLocation');
+
+    let $favoriteAnimationImage = document.createElement('img');
+    $favoriteAnimationImage.setAttribute('src', data.favorite[i].image);
+      $favoriteAnimationImage.setAttribute('class', "favoriteAnimationImage");
+
+
+    let $secondHalf = document.createElement('div');
+    $secondHalf.setAttribute('class','secondHalf');
+    let $favoriteDescription = document.createElement('div');
+    $favoriteDescription.setAttribute('class','favoriteDescription');
+    $favoriteDescription.textContent = data.favorite[i].description;
+    let $favoriteScore = document.createElement('div');
+    $favoriteScore.setAttribute('class','favoriteScore');
+    $favoriteScore.textContent = "Rotten Tomato Score : " + data.favorite[i].score
+
+
+    $favoriteAnimations.append($favoriteAnimationTitle);
+    $favoriteAnimations.append($column);
+    $column.append($firstHalf);
+    $column.append($secondHalf);
+    $firstHalf.append($favoriteAnimationImageLocation);
+    $favoriteAnimationImageLocation.append($favoriteAnimationImage)
+    $secondHalf.append($favoriteDescription);
+    $secondHalf.append($favoriteScore);
+    }
   }
-
-  if (event.target.className === 'titles' || event.target.className === 'img') {
-      $animationDetails.className = 'animationDetails view';
-      $container.className = 'hidden';
-
-      if (event.target.className === 'titles') {
-        $animationList.textContent = event.target.textContent;
-        $bigAnime.setAttribute('src', 'images/' + event.target.textContent.toLowerCase().replace(/\s/g, '') + '.jpeg');
-        $bigAnime.setAttribute('class', 'bigImage');
-        $animationDetails.append($animationList);
-        $animationDetails.append($bigAnime);
-
-      }
-      if (event.target.className === 'img') {
-        $animationList.textContent = event.target.id;
-        $bigAnime.setAttribute('src', event.target.src);
-        $bigAnime.setAttribute('class', 'bigImage');
-        $animationDetails.append($animationList);
-        $animationDetails.append($bigAnime);
-      }
-    for (var i = 0; i < xhrFilms.response.length; i++) {
-      if (event.target.className === 'titles' && event.target.textContent === xhrFilms.response[i].title) {
-        $description.textContent = xhrFilms.response[i].description;
-        $animationDetails.append($description);
-        $animationDetails.append($favorite);
-      }
-      if (event.target.className === 'img' && event.target.id === xhrFilms.response[i].title) {
-        $description.textContent = xhrFilms.response[i].description;
-        $animationDetails.append($description);
-        $animationDetails.append($favorite);
-      }
-    }
-    }
-
-})
-
-
-
-
-
-
-
-
-/*
-window.addEventListener('click', function (event) {
-  if (event.target.className === 'titles') {
-    $container.className = 'hidden';
-    $animationDetails.className = 'animationDetails view';
-    $animationList.textContent = event.target.textContent;
-    $bigAnime.setAttribute('src', 'images/' + event.target.textContent.toLowerCase().replace(/\s/g, '') + '.jpeg');
-    $bigAnime.setAttribute('class', 'bigImage');
-    $animationDetails.append($animationList);
-    $animationDetails.append($bigAnime);
-
-    for (var i = 0; i <data.favorite.length; i++) {
-      if (event.target.textContent !== data.favorite[i].title) {
-        $favorite.className = 'no favorite';
-        $favorite.textContent = 'Add To Favorite';
-      }
-      if (event.target.textContent === data.favorite[i].title){
-        $favorite.className = 'favorite';
-        $favorite.textContent = 'Remove From Favorite';
-      }
-    }
-
+  if (event.target.textContent === 'Favorites' && document.querySelectorAll('.favoriteAnimations').length === 1) {
+    return ''
   }
   if (event.target.className === 'img') {
-    $container.className = 'hidden';
+
     $animationDetails.className = 'animationDetails view';
+    $favoriteView.className = "favorites hidden"
+    $container.className = 'hidden';
     $animationList.textContent = event.target.id;
     $bigAnime.setAttribute('src', event.target.src);
     $bigAnime.setAttribute('class', 'bigImage');
-    $animationDetails.append($animationList);
-    $animationDetails.append($bigAnime);
 
-    for (var i = 0; i < data.favorite.length; i++) {
-      if (data.favorite[i].title!== event.target.id) {
-        $favorite.className = 'no favorite';
-        $favorite.textContent = 'Add to Favorite';
-      }
-      if (data.favorite[i].title === event.target.id) {
-        $favorite.className = 'favorite';
-        $favorite.textContent = 'Remove From Favorite';
+
+    for (var i = 0; i < xhrFilms.response.length; i++) {
+      if (event.target.id === xhrFilms.response[i].title) {
+        $description.textContent = "Description : "+ xhrFilms.response[i].description;
+        $animationDetails.append($description);
       }
     }
 
+
+
+      if (data.title.includes(event.target.id)) {
+        $favoritesButton.textContent = "remove from favorite"
+        $animationDetails.append($animationList);
+        $animationDetails.append($bigAnime);
+        $animationDetails.append($description);
+
+      }
+      else {
+        $favoritesButton.textContent = "Add to Favorite"
+        $animationDetails.append($animationList);
+        $animationDetails.append($bigAnime);
+        $animationDetails.append($description);
+
+      }
+    $animationDetails.append($favoritesButton);
   }
-});
 
-window.addEventListener('click', function (event) {
-  for (var i = 0; i < xhrFilms.response.length; i++) {
-    if (event.target.className === 'titles' && event.target.textContent === xhrFilms.response[i].title) {
-      $description.textContent = xhrFilms.response[i].description;
-      $animationDetails.append($description);
-      $animationDetails.append($favorite);
-    }
-    if (event.target.className === 'img' && event.target.id === xhrFilms.response[i].title) {
-      $description.textContent = xhrFilms.response[i].description;
-      $animationDetails.append($description);
-      $animationDetails.append($favorite);
-    }
-  }
-});
 
-$navBar.addEventListener('click', function (event) {
-
-  if (event.target.textContent === 'Home') {
+  if (event.target.textContent === 'Add to Favorite') {
+    $animationDetails.className = 'animationDetails hidden';
     $container.className = 'container';
+    for (var i = 0; i < xhrFilms.response.length; i++) {
+      if (xhrFilms.response[i].title === $animationList.textContent) {
+        data.title.push($animationList.textContent);
+        data.image.push($bigAnime.src);
+        const test = {
+          title: $animationList.textContent,
+          image: $bigAnime.src.slice(40,$bigAnime.src.length),
+          description: $description.textContent,
+          score : data.score[i]
+        }
+
+        data.favorite.push(test);
+      }
+    }
+    myStorage.setItem('Favorites', JSON.stringify(data))
+  }
+
+  if (event.target.textContent === 'remove from favorite') {
     $animationDetails.className = 'animationDetails hidden';
     $favoriteView.className = "favorites hidden"
-    var $previousImage = document.querySelector('.bigImage');
-    if ($previousImage.length > 1 && document.querySelector('.list2').length > 1 && document.querySelector('.description') > 1 && document.getElementById('favorite?')<1){
-      $previousImage.remove();
-      document.querySelector('.list2').remove();
-      document.querySelector('.description').remove();
-      document.getElementById('favorite?').remove();
-    }
-    var $favoriteReset = document.getElementsByClassName('animationInfo2')
-      for (var i = 0 ; i < $favoriteReset.length ; i ++){
-        if($favoriteReset.length >0 ){
-          $favoriteReset[i].remove();
-        }
-      }
-  }
+    $container.className = 'container';
+    for(var i = 0 ; i < data.favorite.length ; i++){
+      if(document.querySelector('.list2').textContent === data.favorite[i].title){
+        data.favorite.splice(i,1);
+        data.title.splice(i,1);
 
-  if (event.target.textContent === 'Favorites' && document.querySelectorAll('.animationInfo2').length < 1) {
-    $container.className = 'hidden';
-    $favoriteView.className = "favorites view"
-    $animationDetails.className = "animationDetails hidden"
-    var $animationInfo2 = document.createElement('div');
-    $animationInfo2.setAttribute('class','animationInfo2');
-    $favoriteView.append($animationInfo2);
-    var $animationTitle2 = document.createElement('div');
-    $favoriteView.append($animationInfo2);
-    $animationTitle2.setAttribute('class','animationTitle2');
-    $animationInfo2.append($animationTitle2);
-
-    for (var i = 0; i < data.title.length; i++) {
-    var $favoriteTitle = document.createElement('div');
-    $favoriteTitle.setAttribute('class', 'title')
-    $favoriteTitle.setAttribute('id','favoriteTitle_'+i);
-    $favoriteTitle.textContent = data.title[i]
-    $animationTitle2.append($favoriteTitle);
-    var $favoriteImageLocation = document.createElement('div');
-    $favoriteImageLocation.setAttribute('class', 'favoriteImageLocation');
-    $favoriteImageLocation.setAttribute('id', data.title[i]);
-    var $favoriteImage = document.createElement('img')
-    $favoriteImage.setAttribute('class', 'favoriteImg');
-      $favoriteImage.setAttribute('src', data.image[i]);
-      $favoriteImageLocation.append($favoriteImage);
-      $favoriteTitle.append($favoriteImageLocation);
-    }
-
-    if (event.target.textContent === 'Home'){
-      for (var i = 0; i < $favoriteTitle.length; i++) {
-        $favoriteTitle[i].remove();
       }
     }
   }
-   });
-
-window.addEventListener('click', function (event) {
-
-
-  if(event.target.textContent === "Add to Favorite"){
-      for (var i = 0; i < xhrFilms.response.length; i++) {
-        if (xhrFilms.response[i].title === $animationList.textContent) {
-          data.title.push($animationList.textContent);
-          data.image.push($bigAnime.src);
-          const test = {
-            title: $animationList.textContent,
-            image: $bigAnime.src
-          }
-
-          data.favorite.push(test);
-        }
-      }
-    myStorage.setItem('Favorites', JSON.stringify(data))
-    }
-  });
-*/
+})

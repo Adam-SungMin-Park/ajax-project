@@ -3,5 +3,6 @@ var data ={
   title: [],
   image: [],
   favorite: [],
-  description: []
+  description: [],
+  score: []
 }
