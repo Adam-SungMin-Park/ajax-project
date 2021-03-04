@@ -1,0 +1,66 @@
+.animationTable{
+  display:flex;
+  flex-wrap:wrap;
+}
+
+.mainImage{
+  width:50%;
+}
+#root2{
+  text-align:center;
+}
+.detailAnimationTable{
+  display:flex;
+}
+.firstHalf{
+  width:50%;
+  margin:auto;
+}
+.secondHalf{
+  width:50%;
+  margin:auto;
+}
+.detailDescription{
+  font-size:2rem;
+  text-align:left;
+}
+.detailScore{
+  font-size:2rem;
+  text-align:left;
+  padding-top: 2rem;
+}
+.animationTable{
+  justify-content: center;
+}
+.navbar{
+  display:flex;
+  justify-content: center;
+}
+.home{
+  margin:auto;
+  font-size: 2rem;
+}
+.favorites{
+  margin:auto;
+  font-size: 2rem;
+}
+.addButton{
+  font-size: 1.5rem;
+  padding: 1rem;
+  border-radius: 5px;
+}
+.removeButton{
+  font-size: 1.5rem;
+  padding: 1rem;
+  border-radius: 5px;
+}
+.favoritesAnimationTitles{
+  display:flex;
+}
+.favoritesFirstHalf{
+  width:50%;
+}
+.favoritesSecondHalf{
+  width:50%;
+  margin:auto;
+}
