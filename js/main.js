@@ -157,7 +157,7 @@ window.addEventListener('click',()=> {
         data.image.push($bigAnime.src);
         const test = {
           title: $animationList.textContent,
-          image: $bigAnime.src.slice(40,$bigAnime.src.length),
+          image: $bigAnime.src,
           description: $description.textContent,
           score : data.score[i]
         }
