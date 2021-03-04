@@ -1,0 +1,34 @@
+* {
+  font-family: 'Cinzel', serif;
+}
+
+a {
+  margin-right: 10px;
+}
+
+header {
+  padding: 50px 20px;
+
+}
+
+.navBar {
+  font-size: 2.5rem;
+}
+.navBar:hover{
+  cursor: pointer;
+}
+.animationDetails{
+  display: none;
+}
+.hidden{
+  display:none;
+}
+.view{
+ display:block;
+ text-align:center;
+}
+.favoriteList{
+  padding: 20px;
+  font-size: 1.5rem;
+  text-align: center;
+}

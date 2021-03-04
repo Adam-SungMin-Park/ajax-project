@@ -1,0 +1,111 @@
+.img {
+  width: 100%;
+}
+
+
+.titles {
+  padding: 20px;
+  text-align: center;
+  width: 21%;
+}
+
+.titles:hover {
+  cursor: pointer;
+}
+
+div {
+  color: black;
+}
+
+.list {
+  padding: 20px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.list2 {
+  padding: 20px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.bigImage {
+  width: 50%;
+  text-align: center;
+}
+
+.animationTitle {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.imageLocation {
+  text-align: center;
+}
+
+.favoriteImageLocations {
+  text-align: center;
+}
+
+.favorite {
+  padding: 100px;
+}
+.favorite:hover{
+  cursor: pointer;
+}
+.animationTitle2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.favoriteTitles {
+  padding: 10px;
+  text-align: center;
+  width: 25%;
+}
+.title {
+  padding: 10px;
+  text-align: center;
+  width: 25%;
+}
+
+
+.favoritesButton{
+  padding-top:2rem;
+  padding-bottom:2rem;
+  color:red;
+}
+.favoriteAnimationImage{
+  width: 80%
+}
+.column{
+  display:flex;
+}
+.firstHalf{
+  width:50%;
+}
+.secondHalf{
+  width:50%;
+  margin: auto;
+  font-size: 1.5rem;
+}
+.favoriteAnimationTitle{
+  font-size:2rem;
+  padding:2rem;
+}
+.favoriteScore{
+  padding-top:2rem;
+}
+
+@media screen and (max-width: 420px){
+  .secondHalf{
+    font-size: 0.75em;
+  }
+  .firstHalf{
+    margin:auto;
+  }
+  .favoriteAnimationTitle{
+    font-size:1.5rem;
+  }
+}
