@@ -53,19 +53,22 @@ window.addEventListener('click',()=> {
     $favoriteView.className = "favorites hidden"
     $container.className = 'container';
     if(document.querySelectorAll('.favoriteAnimations').length !== 0) {
-      for (var i = 0; i < document.querySelectorAll('.favoriteAnimations').length; i++){
-        document.querySelectorAll('.favoriteAnimations')[i].remove()
+      for (var i = document.querySelectorAll('.favoriteAnimations').length; i > 0; i--){
+        console.log('deleing')
+        document.querySelectorAll('.favoriteAnimations')[i-1].remove()
       }
     }
 
   }
 
-  if (event.target.textContent === 'Favorites' && document.querySelectorAll('.favoriteAnimations').length === 0) {
+  if (event.target.textContent === 'Favorites' ) {
 
 
     $container.className = 'hidden';
     $favoriteView.className = "favorites view"
     $animationDetails.className = "animationDetails hidden"
+
+    if (document.querySelectorAll('.favoriteAnimations').length === 0){
 
 
     for (var i = 0 ; i < data.favorite.length ; i++){
@@ -107,6 +110,7 @@ window.addEventListener('click',()=> {
     $secondHalf.append($favoriteDescription);
     $secondHalf.append($favoriteScore);
     }
+  }
   }
   if (event.target.textContent === 'Favorites' && document.querySelectorAll('.favoriteAnimations').length === 1) {
     return ''
