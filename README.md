@@ -27,13 +27,16 @@ A web app created with JavaScript, HTML 5, and CSS 3 for people who want to view
 
 <h2>Demo</h2>
 
-<h3>List of Animation and adding to the favorite feature.
-![recording (4)](https://user-images.githubusercontent.com/57808972/110748898-3c165800-81f5-11eb-9c3b-1844040cf87a.gif)</h3>
+<h3>List of Animation and adding to the favorite feature.</h3>
+
+![recording (4)](https://user-images.githubusercontent.com/57808972/110748898-3c165800-81f5-11eb-9c3b-1844040cf87a.gif)
 
 <h3>After adding the animation to the favorites.</h3>
+
 ![recording (5)](https://user-images.githubusercontent.com/57808972/110749153-91526980-81f5-11eb-8c1d-5140295cb288.gif)
 
 <h3>Removing animation from the favorites.</h3>
+
 ![recording (6)](https://user-images.githubusercontent.com/57808972/110749328-e2625d80-81f5-11eb-85b3-8c12a2f7e878.gif)
 
 
