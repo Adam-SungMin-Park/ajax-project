@@ -71,8 +71,6 @@ window.addEventListener('click',()=> {
     $favoriteView.className = "favorites view"
     $animationDetails.className = "animationDetails hidden"
     if (data.favorite.length === 0 && document.querySelectorAll('.noFav').length === 0) {
-      console.log('no fav')
-
       noFav.setAttribute('class', 'noFav');
       noFav.textContent = "No Favorites Saved";
       $noFav.append(noFav);
