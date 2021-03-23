@@ -30,7 +30,7 @@ div {
 }
 
 .bigImage {
-  width: 50%;
+  width: 25%;
   text-align: center;
 }
 
@@ -75,9 +75,11 @@ div {
   padding-top:2rem;
   padding-bottom:2rem;
   color:red;
+  cursor: pointer;
+  text-decoration:underline;
 }
 .favoriteAnimationImage{
-  width: 80%
+  width: 40%
 }
 .column{
   display:flex;
@@ -96,6 +98,10 @@ div {
 }
 .favoriteScore{
   padding-top:2rem;
+}
+.description{
+  width: 50%;
+  margin: auto;
 }
 
 @media screen and (max-width: 420px){

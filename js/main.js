@@ -9,12 +9,14 @@ var $animationDetails = document.querySelector('.animationDetails');
 var $animationList = document.createElement('div');
 $animationList.setAttribute('class', 'list2');
 var $favoritesButton = document.createElement('div');
+var $descriptionLocation = document.createElement('div');
+$descriptionLocation.setAttribute('class','descriptionLocation');
 var $description = document.createElement('div');
 var $navBar = document.querySelector('.navBar');
 $description.setAttribute('class', 'description');
 $favoritesButton.setAttribute('class', 'favoritesButton');
-
-
+var $noFav = document.querySelector('.favoriteList')
+var noFav = document.createElement('div')
 var $favoriteView = document.querySelector('.favorites');
 var $animationTitle2Location = document.querySelector('.animationTitle2');
 
@@ -52,24 +54,31 @@ window.addEventListener('click',()=> {
     $animationDetails.className = 'animationDetails hidden';
     $favoriteView.className = "favorites hidden"
     $container.className = 'container';
-    if(document.querySelectorAll('.favoriteAnimations').length !== 0) {
+    if(document.querySelectorAll('.favoriteAnimations').length !== 0 ) {
       for (var i = document.querySelectorAll('.favoriteAnimations').length; i > 0; i--){
-        console.log('deleing')
+
         document.querySelectorAll('.favoriteAnimations')[i-1].remove()
       }
     }
 
   }
 
-  if (event.target.textContent === 'Favorites' ) {
+  if (event.target.textContent === 'Favorites'  ) {
+
 
 
     $container.className = 'hidden';
     $favoriteView.className = "favorites view"
     $animationDetails.className = "animationDetails hidden"
+    if (data.favorite.length === 0 && document.querySelectorAll('.noFav').length === 0) {
+      console.log('no fav')
+
+      noFav.setAttribute('class', 'noFav');
+      noFav.textContent = "No Favorites Saved";
+      $noFav.append(noFav);
+    }
 
     if (document.querySelectorAll('.favoriteAnimations').length === 0){
-
 
     for (var i = 0 ; i < data.favorite.length ; i++){
     let $favoriteAnimations = document.createElement('div');
@@ -110,9 +119,13 @@ window.addEventListener('click',()=> {
     $secondHalf.append($favoriteDescription);
     $secondHalf.append($favoriteScore);
     }
+
   }
   }
-  if (event.target.textContent === 'Favorites' && document.querySelectorAll('.favoriteAnimations').length === 1) {
+  if (event.target.textContent === 'Favorites' && document.querySelectorAll('.favoriteAnimations').length === 1 ) {
+    return ''
+  }
+  if (event.target.textContent === 'Favorites' && document.querySelectorAll('.noFav').length === 1) {
     return ''
   }
   if (event.target.className === 'img') {
@@ -128,7 +141,8 @@ window.addEventListener('click',()=> {
     for (var i = 0; i < xhrFilms.response.length; i++) {
       if (event.target.id === xhrFilms.response[i].title) {
         $description.textContent = "Description : "+ xhrFilms.response[i].description;
-        $animationDetails.append($description);
+        $animationDetails.append($descriptionLocation);
+        $descriptionLocation.append($description);
       }
     }
 
@@ -138,21 +152,25 @@ window.addEventListener('click',()=> {
         $favoritesButton.textContent = "remove from favorite"
         $animationDetails.append($animationList);
         $animationDetails.append($bigAnime);
-        $animationDetails.append($description);
+        $animationDetails.append($descriptionLocation);
+        $descriptionLocation.append($description);
+
 
       }
       else {
-        $favoritesButton.textContent = "Add to Favorite"
+        $favoritesButton.textContent = "Add to Favorites"
         $animationDetails.append($animationList);
         $animationDetails.append($bigAnime);
-        $animationDetails.append($description);
+        $animationDetails.append($descriptionLocation);
+        $descriptionLocation.append($description);
+
 
       }
     $animationDetails.append($favoritesButton);
   }
 
 
-  if (event.target.textContent === 'Add to Favorite') {
+  if (event.target.textContent === 'Add to Favorites') {
     $animationDetails.className = 'animationDetails hidden';
     $container.className = 'container';
     for (var i = 0; i < xhrFilms.response.length; i++) {
@@ -167,6 +185,7 @@ window.addEventListener('click',()=> {
         }
 
         data.favorite.push(test);
+        noFav.textContent = '';
       }
     }
     myStorage.setItem('Favorites', JSON.stringify(data))
@@ -180,8 +199,8 @@ window.addEventListener('click',()=> {
       if(document.querySelector('.list2').textContent === data.favorite[i].title){
         data.favorite.splice(i,1);
         data.title.splice(i,1);
-
       }
     }
+    noFav.textContent = 'No Favorites Saved'
   }
 })
